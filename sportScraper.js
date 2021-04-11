@@ -1,4 +1,4 @@
-// Axios Scraper
+// web scraper
 
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -22,12 +22,12 @@ axios(url)
     scoreboard.each(function () {
       const homeTeam = $(this).find('div > .odds-content__team-vertical-home').text();
       const awayTeam = $(this).find('div > .odds-content__team-vertical-away').text();
-      const score = new Set($(this).find('td > b').text());
+      const score = $(this).find('td > b').text();
 
       gameData.push ({
         homeTeam,
         awayTeam,
-        goals: score,
+        homegoals: score,
         awaygoals: score,
       })
     });
