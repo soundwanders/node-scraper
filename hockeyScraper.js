@@ -19,21 +19,21 @@ axios(url)
 
     // Loop through table and extract team name and number of goals scored
     championsList.each(function () {
-      const year  = $(this).find('tr > td:nth-child(1)').text();
+      const year = $(this).find('tr > td:nth-child(1)').text();
       const champs = $(this).find('tr > td:nth-child(2)').text();
       const runnerUp = $(this).find('tr > td:nth-child(3)').text();
       const score = $(this).find('tr > td:nth-child(4)').text();
       const bronze = $(this).find('tr > td:nth-child(5)').text();
 
-      gameData.push ({
-        Season: year ,
-        Champions: champs ,
-        RunnerUp: runnerUp ,
-        FinalScore: score ,
-        ThirdPlace: bronze ,
-      })
+      gameData.push({
+        Season: year,
+        Champions: champs,
+        RunnerUp: runnerUp,
+        FinalScore: score,
+        ThirdPlace: bronze
+      });
     });
-    console.log("scraped data")
+    console.log('scraped data');
     console.log(gameData);
   })
   .catch(console.error);

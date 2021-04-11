@@ -4,7 +4,6 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const url = 'https://www.sportsbettingdime.com/nhl/results';
 
-
 axios(url)
   .then(response => {
     const html = response.data;
@@ -24,14 +23,14 @@ axios(url)
       const awayTeam = $(this).find('div > .odds-content__team-vertical-away').text();
       const score = $(this).find('td > b').text();
 
-      gameData.push ({
+      gameData.push({
         homeTeam,
         awayTeam,
         homegoals: score,
-        awaygoals: score,
-      })
+        awaygoals: score
+      });
     });
-    console.log("Data below scraped from sportsbettingdime.com")
+    console.log('Data below scraped from sportsbettingdime.com');
     console.log(gameData);
   })
   .catch(console.error);

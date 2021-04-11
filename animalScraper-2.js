@@ -1,9 +1,9 @@
 // Web Scraping with axios , cheerio
+// functional
 
 const axios = require('axios');
 const cheerio = require('cheerio');
 const url = 'https://www.worldwildlife.org/species/directory?direction=desc&sort=extinction_status';
-
 
 axios(url)
   .then(response => {
@@ -20,17 +20,17 @@ axios(url)
 
     // Loop through table and extract team name and number of goals scored
     speciesList.each(function () {
-        const name = $(this).find('tr > .keep').text();
-        const scientific = $(this).find('tr > td > em').text();
-        const conservation = ($(this).find('tr > td:nth-child(3)').text());
+      const name = $(this).find('tr > .keep').text();
+      const scientific = $(this).find('tr > td > em').text();
+      const conservation = ($(this).find('tr > td:nth-child(3)').text());
 
-        animalData.push ({
-            commonName: name ,
-            scientificName: scientific ,
-            conservationStatus: conservation ,
-        })
+      animalData.push({
+        commonName: name,
+        scientificName: scientific,
+        conservationStatus: conservation
+      });
     });
-    console.log("Scraped")
+    console.log('Scraped');
     console.log(animalData);
   })
   .catch(console.error);
