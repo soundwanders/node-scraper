@@ -31,7 +31,7 @@ axios(url)
         RunnerUp: runnerUp,
         FinalScore: score,
         ThirdPlace: bronze
-      });
+      })
     });
     console.log('scraped data');
     console.log(gameData);

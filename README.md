@@ -1,2 +1,2 @@
-# puckscrape
-Scrape the web for NHL hockey scores and gambling results
+## Data Scraping with Node.js
+### Experimenting with Axios, Cheerio, Puppeteer, RequestPromise.

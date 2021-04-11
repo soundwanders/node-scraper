@@ -1,44 +1,36 @@
-// web scraping with axios
-// *** currently broken
+// Web Scraping with axios , cheerio
+// functional
 
 const axios = require('axios');
 const cheerio = require('cheerio');
 const url = 'https://www.worldwildlife.org/species/directory?direction=desc&sort=extinction_status';
 
-// Create array gameData to hold scraped content
-const animalData = [];
+axios(url)
+  .then(response => {
+    const html = response.data;
+    const $ = cheerio.load(html);
 
-const name = new Set();
-const scientific = new Set();
-const conservation = new Set();
+    // table body contains three table headers (scope = cols)
+    // each table row contains 3 td, common name, scientific name, and conservation status
+    // table rows have classes of 'odd' / 'even'
+    const speciesList = $('tbody > tr');
 
-const fetchData = async () => {
-  const result = await axios.get(url);
-  return cheerio.load(result.data);
-};
+    // Create array gameData to hold scraped content
+    const animalData = [];
 
-const scrapeData = async () => {
-  const $ = await fetchData();
-  $('tr > .keep').each((index, element) => {
-    name.add($(element).text());
-  });
+    // Loop through table and extract team name and number of goals scored
+    speciesList.each(function () {
+      const name = $(this).find('tr > .keep').text();
+      const scientific = $(this).find('tr > td > em').text();
+      const conservation = ($(this).find('tr > td:nth-child(3)').text());
 
-  $('td > em').each((index, element) => {
-    scientific.add($(element).text());
-  });
-
-  $('td.keep > td ').each((index, element) => {
-    conservation.add($(element).text());
-  });
-};
-
-animalData.push({
-  commonName: [...name],
-  scientificName: [...scientific],
-  conservationStatus: [...conservation]
-});
-
-console.log('Scraped data');
-console.log(animalData);
-
-module.exports = scrapeData;
+      animalData.push({
+        commonName: name,
+        scientificName: scientific,
+        conservationStatus: conservation
+      })
+    });
+    console.log('Scraped');
+    console.log(animalData);
+  })
+  .catch(console.error);
