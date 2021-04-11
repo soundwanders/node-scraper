@@ -9,15 +9,12 @@ axios(url)
     const html = response.data;
     const $ = cheerio.load(html);
 
-    // div class odds-content-archive is a container that holds entire table of data
-    // div class odds-content-archive___matchup holds the separate data for each game
-    // by accessing the individual matchup divs, you are able to loop through and log each games data
     const championsList = $('#table_76473_41d02cba-c908-4ed1-9416-20286caac69c > tbody > tr');
 
     // Create array gameData to hold scraped content
     const gameData = [];
 
-    // Loop through table and extract team name and number of goals scored
+    // Loop through table body and extract each row's data
     championsList.each(function () {
       const year = $(this).find('tr > td:nth-child(1)').text();
       const champs = $(this).find('tr > td:nth-child(2)').text();
