@@ -1,5 +1,5 @@
-// web scraping with axios
-// *** currently broken
+// Endangered Species web scraping with axios, cheerio
+// not working yet
 
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -21,21 +21,21 @@ const scrapeData = async () => {
   const $ = await fetchData();
   $('tr > .keep').each((index, element) => {
     name.add($(element).text());
-  });
+  })
 
-  $('td > em').each((index, element) => {
+  $('tr > td > em').each((index, element) => {
     scientific.add($(element).text());
-  });
+  })
 
-  $('td.keep > td ').each((index, element) => {
+  $('tr > td:nth-child(3)').each((index, element) => {
     conservation.add($(element).text());
-  });
+  })
 };
 
 animalData.push({
-  commonName: [...name],
-  scientificName: [...scientific],
-  conservationStatus: [...conservation]
+  commonName: name,
+  scientificName: scientific,
+  conservationStatus: conservation
 });
 
 console.log('Scraped data');

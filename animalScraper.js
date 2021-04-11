@@ -1,5 +1,4 @@
-// Web Scraping with axios , cheerio
-// functional
+// Endangered Species web scraping with axios, cheerio
 
 const axios = require('axios');
 const cheerio = require('cheerio');

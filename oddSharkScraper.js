@@ -1,5 +1,4 @@
-// Puppeteer scraper
-
+// Data scraping NHL Hockey game results with cheerio, puppeteer
 const cheerio = require('cheerio');
 const puppeteer = require('puppeteer');
 
@@ -17,10 +16,10 @@ puppeteer
     const $ = cheerio.load(html);
     const finalScores = [];
 
-    $('a[href*="/nhl/scores"] > td').each(function () {
+    $('a[href*="/nhl/scores"] > td > tr').each(function () {
       finalScores.push({
         score: $(this).text()
-      });
+      })
     });
     console.log(finalScores);
   })
