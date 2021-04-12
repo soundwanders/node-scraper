@@ -1,6 +1,6 @@
 {
-  "name": "puckscrape",
-  "version": "1.0.0",
+  "name": "node-scraper",
+  "version": "1.2.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/soundwanders/puckscrape.git"
+    "url": "git+https://github.com/soundwanders/node-scraper.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/soundwanders/puckscrape/issues"
+    "url": "https://github.com/soundwanders/node-scraper/issues"
   },
-  "homepage": "https://github.com/soundwanders/puckscrape#readme",
+  "homepage": "https://github.com/soundwanders/node-scraper#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.5",
