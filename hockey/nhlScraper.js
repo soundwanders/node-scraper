@@ -11,7 +11,7 @@ axios(url)
 
     // get current day, split to remove UTC
     // convert date to ISO string before split to avoid Type Error
-    const today = new Date().toISOString().split('T')[0];
+    const todaysDate = new Date().toISOString().split('T')[0];
 
     // get table that holds final scores
     const scoreboard = $('div.odds-content-archive__matchups:nth-child(9) > div > div > table');
@@ -59,7 +59,7 @@ axios(url)
     })
 
     const memo = 'Data collected from NHL Games played '; // intentional space before closing quote
-    gameData.push(memo + today);
+    gameData.push(memo + todaysDate);
 
     // console log the array that contains all of today's game data
     console.log(gameData);

@@ -17,14 +17,14 @@ axios(url)
     // Loop through table body and extract each row's data
     championsList.each(function () {
       const year = $(this).find('tr > td:nth-child(1)').text();
-      const champs = $(this).find('tr > td:nth-child(2)').text();
+      const winner = $(this).find('tr > td:nth-child(2)').text();
       const runnerUp = $(this).find('tr > td:nth-child(3)').text();
       const score = $(this).find('tr > td:nth-child(4)').text();
       const bronze = $(this).find('tr > td:nth-child(5)').text();
 
       gameData.push({
         Season: year,
-        Champions: champs,
+        Champions: winner,
         RunnerUp: runnerUp,
         FinalScore: score,
         ThirdPlace: bronze
